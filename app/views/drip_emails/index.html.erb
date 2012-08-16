@@ -1,0 +1,27 @@
+<h1>Listing drip_emails</h1>
+
+<table>
+  <tr>
+    <th>Email</th>
+    <th>Drip</th>
+    <th>Sequence</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @drip_emails.each do |drip_email| %>
+  <tr>
+    <td><%= drip_email.email_id %></td>
+    <td><%= drip_email.drip_id %></td>
+    <td><%= drip_email.sequence %></td>
+    <td><%= link_to 'Show', drip_email %></td>
+    <td><%= link_to 'Edit', edit_drip_email_path(drip_email) %></td>
+    <td><%= link_to 'Destroy', drip_email, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Drip email', new_drip_email_path %>

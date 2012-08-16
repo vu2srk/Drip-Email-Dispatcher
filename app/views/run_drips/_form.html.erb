@@ -1,0 +1,17 @@
+<%= form_for(@run_drip) do |f| %>
+  <% if @run_drip.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@run_drip.errors.count, "error") %> prohibited this run_drip from being saved:</h2>
+
+      <ul>
+      <% @run_drip.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

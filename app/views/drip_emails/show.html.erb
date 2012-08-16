@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Email:</b>
+  <%= @drip_email.email_id %>
+</p>
+
+<p>
+  <b>Drip:</b>
+  <%= @drip_email.drip_id %>
+</p>
+
+<p>
+  <b>Sequence:</b>
+  <%= @drip_email.sequence %>
+</p>
+
+
+<%= link_to 'Edit', edit_drip_email_path(@drip_email) %> |
+<%= link_to 'Back', drip_emails_path %>

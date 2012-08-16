@@ -1,0 +1,25 @@
+<%= form_for(@dispatched_drip) do |f| %>
+  <% if @dispatched_drip.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dispatched_drip.errors.count, "error") %> prohibited this dispatched_drip from being saved:</h2>
+
+      <ul>
+      <% @dispatched_drip.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :customer_id %><br />
+    <%= f.number_field :customer_id %>
+  </div>
+  <div class="field">
+    <%= f.label :drip_id %><br />
+    <%= f.number_field :drip_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

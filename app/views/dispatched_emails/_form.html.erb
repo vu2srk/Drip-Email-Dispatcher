@@ -1,0 +1,31 @@
+<%= form_for(@dispatched_email) do |f| %>
+  <% if @dispatched_email.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dispatched_email.errors.count, "error") %> prohibited this dispatched_email from being saved:</h2>
+
+      <ul>
+      <% @dispatched_email.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <div class="field">
+    <%= f.label :sent_date %><br />
+    <%= f.date_select :sent_date %>
+  </div>
+  <div class="field">
+    <%= f.label :email_id %><br />
+    <%= f.number_field :email_id %>
+  </div>
+  <div class="field">
+    <%= f.label :dispatched_drip_id %><br />
+    <%= f.number_field :dispatched_drip_id %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

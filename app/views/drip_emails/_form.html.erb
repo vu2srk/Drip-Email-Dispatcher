@@ -1,0 +1,29 @@
+<%= form_for(@drip_email) do |f| %>
+  <% if @drip_email.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@drip_email.errors.count, "error") %> prohibited this drip_email from being saved:</h2>
+
+      <ul>
+      <% @drip_email.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email_id %><br />
+    <%= f.number_field :email_id %>
+  </div>
+  <div class="field">
+    <%= f.label :drip_id %><br />
+    <%= f.number_field :drip_id %>
+  </div>
+  <div class="field">
+    <%= f.label :sequence %><br />
+    <%= f.number_field :sequence %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

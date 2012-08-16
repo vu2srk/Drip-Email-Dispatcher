@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Dispatched Drip ID:</b>
+  <%= @dispatched_email.dispatched_drip_id %>
+</p>
+
+<p>
+  <b>Sent date:</b>
+  <%= @dispatched_email.sent_date %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @dispatched_email.email_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_dispatched_email_path(@dispatched_email) %> |
+<%= link_to 'Back', dispatched_emails_path %>

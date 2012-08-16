@@ -1,0 +1,29 @@
+<h1>Listing dispatched_emails</h1>
+
+<table>
+  <tr>
+    
+    <th>Sent date</th>
+    <th>Email</th>
+    <th>Dispatched Drip</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dispatched_emails.each do |dispatched_email| %>
+  <tr>
+    
+    <td><%= dispatched_email.sent_date %></td>
+    <td><%= dispatched_email.email_id %></td>
+    <td><%= dispatched_email.dispatched_drip_id %></td>
+    <td><%= link_to 'Show', dispatched_email %></td>
+    <td><%= link_to 'Edit', edit_dispatched_email_path(dispatched_email) %></td>
+    <td><%= link_to 'Destroy', dispatched_email, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Dispatched email', new_dispatched_email_path %>

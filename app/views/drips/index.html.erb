@@ -1,0 +1,23 @@
+<h1>Listing drips</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @drips.each do |drip| %>
+  <tr>
+    <td><%= drip.name %></td>
+    <td><%= link_to 'Show', drip %></td>
+    <td><%= link_to 'Edit', edit_drip_path(drip) %></td>
+    <td><%= link_to 'Destroy', drip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Drip', new_drip_path %>
