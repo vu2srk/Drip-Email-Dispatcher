@@ -8,6 +8,7 @@ class RunDripsController < ApplicationController
     connection = ActiveRecord::Base.connection()
     
     results = ""
+    nextDispatch = nil
     
     customers.each do |customer|
       @dispatched_drip = customer.dispatched_drips.find(:all,:conditions=>['drip_id = ?',customer.drip_id]).first
@@ -21,11 +22,10 @@ class RunDripsController < ApplicationController
         today = Date.today
         lastDispatch = latestEmail.sent_date
         if ((lastDispatch + interval) == today)
-          @dispatched_email = @dispatched_drip.dispatched_emails.build(sent_date: Date.today, email_id: nextDispatch.id)
-          @dispatched_email.save
+          @dispatched_drip.send_next_email(nextDispatch.id)
           results += "User: "+customer.name+" Dispatched email "+ nextDispatch.id.to_s + "."
         else
-          results += "User: "+customer.name+" Email not sent. Next dispatch is only on: "+(lastDispatch + interval).to_s + + "."
+          results += "User: "+customer.name+" Email not sent. Next dispatch is only on: "+(lastDispatch + interval).to_s + "."
         end
       else
         results += "User: "+customer.name+"Drip is complete"

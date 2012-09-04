@@ -39,16 +39,24 @@ class CustomersController < ApplicationController
 
   # POST /customers
   # POST /customers.json
+  def demo
+    @customer = Customer.find(params[:id])
+    @customer.demo_started
+  end
+  
   def create
     @customer = Customer.new(params[:customer])
     connection = ActiveRecord::Base.connection()
 
     respond_to do |format|
       if @customer.save
-        @dispatched_drip = @customer.dispatched_drips.build(drip_id: 1)
+        @dispatched_drip = @customer.dispatched_drips.build(drip_id: 2)
         @dispatched_drip.save
-        @dispatched_email = @dispatched_drip.dispatched_emails.build(sent_date: Date.today, email_id: Email.find(:all, :conditions => ['drip_id = ? AND sequence = ?',1,1]))
-        @dispatched_email.save
+        #@dispatched_email = @dispatched_drip.dispatched_emails.build(sent_date: Date.today, email_id: Email.find(:all, :conditions => ['drip_id = ? AND sequence = ?',2,1]).first.id)
+        #@dispatched_email.save
+        #if (@dispatched_email.dispatched_drip.drip_id == 2)
+            #@customer.quiz_completed(@dispatched_email)
+        #end
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
         format.json { render json: @customer, status: :created, location: @customer }
       else

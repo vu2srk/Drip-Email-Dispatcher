@@ -1,8 +1,10 @@
 DripDispatch::Application.routes.draw do
   
-  resources :dispatched_drips
-
   match '/run_drips/runDrip', :controller => 'run_drips', :action => 'runDrip'
+  
+  match '/customers/demo', :controller => 'customers', :action => 'demo'
+  
+  resources :dispatched_drips
   
   resources :run_drips
 
@@ -15,8 +17,6 @@ DripDispatch::Application.routes.draw do
   resources :drips
 
   resources :emails
-
-  resources :users
   
   
 
